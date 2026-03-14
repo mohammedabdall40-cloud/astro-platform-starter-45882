@@ -1,0 +1,453 @@
+// معرّف الشراكة
+const AFFILIATE_TAG = 'socialinkstor-21';
+const AMAZON_SA_URL = 'https://www.amazon.sa/-/en';
+
+// بيانات المنتجات
+const products = [
+    // الإلكترونيات
+    {
+        id: 1,
+        name: 'سماعات رأس لاسلكية',
+        category: 'electronics',
+        price: 299,
+        rating: 4.5,
+        reviews: 120,
+        emoji: '🎧',
+        amazonUrl: 'https://amzn.to/4bI0rdg'
+    },
+    {
+        id: 2,
+        name: 'كاميرا ويب 4K',
+        category: 'electronics',
+        price: 399,
+        rating: 4.5,
+        reviews: 110,
+        emoji: '📷',
+        amazonUrl: 'https://www.amazon.sa/s?k=4k+webcam'
+    },
+    {
+        id: 3,
+        name: 'ماوس لاسلكي',
+        category: 'electronics',
+        price: 79,
+        rating: 4.3,
+        reviews: 145,
+        emoji: '🖱️',
+        amazonUrl: 'https://www.amazon.sa/s?k=wireless+mouse'
+    },
+    {
+        id: 4,
+        name: 'لوحة مفاتيح ميكانيكية',
+        category: 'electronics',
+        price: 249,
+        rating: 4.7,
+        reviews: 98,
+        emoji: '⌨️',
+        amazonUrl: 'https://www.amazon.sa/s?k=mechanical+keyboard'
+    },
+    {
+        id: 5,
+        name: 'شاحن سريع 65W',
+        category: 'electronics',
+        price: 89,
+        rating: 4.6,
+        reviews: 156,
+        emoji: '🔌',
+        amazonUrl: 'https://www.amazon.sa/s?k=fast+charger'
+    },
+    {
+        id: 6,
+        name: 'مكبر صوت بلوتوث',
+        category: 'electronics',
+        price: 179,
+        rating: 4.4,
+        reviews: 87,
+        emoji: '🔊',
+        amazonUrl: 'https://www.amazon.sa/s?k=bluetooth+speaker'
+    },
+    
+    // الملابس
+    {
+        id: 7,
+        name: 'قميص رياضي',
+        category: 'fashion',
+        price: 149,
+        rating: 4.3,
+        reviews: 65,
+        emoji: '👕',
+        amazonUrl: 'https://www.amazon.sa/s?k=sports+shirt'
+    },
+    {
+        id: 8,
+        name: 'حقيبة ظهر',
+        category: 'fashion',
+        price: 129,
+        rating: 4.2,
+        reviews: 75,
+        emoji: '🎒',
+        amazonUrl: 'https://www.amazon.sa/s?k=backpack'
+    },
+    {
+        id: 9,
+        name: 'حذاء رياضي',
+        category: 'fashion',
+        price: 199,
+        rating: 4.6,
+        reviews: 134,
+        emoji: '👟',
+        amazonUrl: 'https://www.amazon.sa/s?k=sports+shoes'
+    },
+    {
+        id: 10,
+        name: 'جاكيت شتوي',
+        category: 'fashion',
+        price: 279,
+        rating: 4.5,
+        reviews: 92,
+        emoji: '🧥',
+        amazonUrl: 'https://www.amazon.sa/s?k=winter+jacket'
+    },
+    {
+        id: 11,
+        name: 'حزام جلدي',
+        category: 'fashion',
+        price: 59,
+        rating: 4.4,
+        reviews: 78,
+        emoji: '🎀',
+        amazonUrl: 'https://www.amazon.sa/s?k=leather+belt'
+    },
+    {
+        id: 12,
+        name: 'ساعة ذكية',
+        category: 'fashion',
+        price: 349,
+        rating: 4.7,
+        reviews: 167,
+        emoji: '⌚',
+        amazonUrl: 'https://www.amazon.sa/s?k=smartwatch'
+    },
+    
+    // التجميل والعطور
+    {
+        id: 13,
+        name: 'عطر فرنسي فاخر',
+        category: 'beauty',
+        price: 189,
+        rating: 4.8,
+        reviews: 143,
+        emoji: '💐',
+        amazonUrl: 'https://www.amazon.sa/s?k=french+perfume'
+    },
+    {
+        id: 14,
+        name: 'كريم العناية بالبشرة',
+        category: 'beauty',
+        price: 79,
+        rating: 4.6,
+        reviews: 112,
+        emoji: '✨',
+        amazonUrl: 'https://www.amazon.sa/s?k=face+cream'
+    },
+    {
+        id: 15,
+        name: 'مجموعة أحمر الشفاه',
+        category: 'beauty',
+        price: 99,
+        rating: 4.5,
+        reviews: 95,
+        emoji: '💄',
+        amazonUrl: 'https://www.amazon.sa/s?k=lipstick+set'
+    },
+    {
+        id: 16,
+        name: 'ماسك العناية الليلي',
+        category: 'beauty',
+        price: 69,
+        rating: 4.7,
+        reviews: 128,
+        emoji: '🌙',
+        amazonUrl: 'https://www.amazon.sa/s?k=night+mask'
+    },
+    {
+        id: 17,
+        name: 'عطر للرجال',
+        category: 'beauty',
+        price: 159,
+        rating: 4.6,
+        reviews: 156,
+        emoji: '👔',
+        amazonUrl: 'https://www.amazon.sa/s?k=mens+cologne'
+    },
+    {
+        id: 18,
+        name: 'مجموعة العناية بالشعر',
+        category: 'beauty',
+        price: 119,
+        rating: 4.5,
+        reviews: 87,
+        emoji: '💇',
+        amazonUrl: 'https://www.amazon.sa/s?k=hair+care+set'
+    },
+    
+    // كتب
+    {
+        id: 19,
+        name: 'كتاب تطوير الذات',
+        category: 'books',
+        price: 89,
+        rating: 4.8,
+        reviews: 85,
+        emoji: '📖',
+        amazonUrl: 'https://www.amazon.sa/s?k=self+development+books'
+    },
+    
+    // منزل
+    {
+        id: 20,
+        name: 'مصباح ذكي',
+        category: 'home',
+        price: 199,
+        rating: 4.6,
+        reviews: 95,
+        emoji: '💡',
+        amazonUrl: 'https://www.amazon.sa/s?k=smart+light'
+    },
+    {
+        id: 21,
+        name: 'مفروشات سرير فاخرة',
+        category: 'home',
+        price: 459,
+        rating: 4.8,
+        reviews: 200,
+        emoji: '🛏️',
+        amazonUrl: 'https://www.amazon.sa/s?k=bedding'
+    },
+    
+    // رياضة
+    {
+        id: 22,
+        name: 'كرة قدم احترافية',
+        category: 'sports',
+        price: 179,
+        rating: 4.4,
+        reviews: 55,
+        emoji: '⚽',
+        amazonUrl: 'https://www.amazon.sa/s?k=football'
+    },
+    {
+        id: 23,
+        name: 'دراجة هوائية',
+        category: 'sports',
+        price: 799,
+        rating: 4.6,
+        reviews: 88,
+        emoji: '🚴',
+        amazonUrl: 'https://www.amazon.sa/s?k=bicycle'
+    },
+    
+    // ألعاب
+    {
+        id: 24,
+        name: 'لعبة فيديو',
+        category: 'toys',
+        price: 349,
+        rating: 4.7,
+        reviews: 140,
+        emoji: '🎮',
+        amazonUrl: 'https://www.amazon.sa/s?k=video+games'
+    },
+    {
+        id: 25,
+        name: 'روبوت تعليمي',
+        category: 'toys',
+        price: 249,
+        rating: 4.4,
+        reviews: 92,
+        emoji: '🤖',
+        amazonUrl: 'https://www.amazon.sa/s?k=educational+robot'
+    }
+];
+
+// متغيرات التتبع
+let stats = {
+    clicks: 0,
+    shares: 0,
+    productClicks: {}
+};
+
+let wishlist = [];
+let currentCategory = 'all';
+
+// تحميل البيانات من localStorage
+function loadStats() {
+    const saved = localStorage.getItem('amazonatsStats');
+    if (saved) {
+        stats = JSON.parse(saved);
+    }
+}
+
+function loadWishlist() {
+    const saved = localStorage.getItem('amazonatsWishlist');
+    if (saved) {
+        wishlist = JSON.parse(saved);
+    }
+}
+
+function saveStats() {
+    localStorage.setItem('amazonatsStats', JSON.stringify(stats));
+}
+
+function saveWishlist() {
+    localStorage.setItem('amazonatsWishlist', JSON.stringify(wishlist));
+}
+
+// عرض المنتجات
+function displayProducts(productsToShow = products) {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = '';
+
+    productsToShow.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <div class="product-image">${product.emoji}</div>
+            <div class="product-info">
+                <div class="product-category">${getCategoryName(product.category)}</div>
+                <div class="product-name">${product.name}</div>
+                <div class="product-price">${product.price} ريال</div>
+                <div class="product-rating">⭐ ${product.rating} (${product.reviews} تقييم)</div>
+                <div class="product-actions">
+                    <a href="${product.amazonUrl}?tag=${AFFILIATE_TAG}" target="_blank" class="btn btn-primary" onclick="trackClick(${product.id})">اشتري الآن</a>
+                    <button class="btn btn-secondary" onclick="toggleWishlist(${product.id})">
+                        ${wishlist.includes(product.id) ? '❤️' : '🤍'}
+                    </button>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+// تتبع النقرات
+function trackClick(productId) {
+    stats.clicks++;
+    stats.productClicks[productId] = (stats.productClicks[productId] || 0) + 1;
+    saveStats();
+    updateDashboard();
+}
+
+// إضافة/إزالة من المفضلة
+function toggleWishlist(productId) {
+    const index = wishlist.indexOf(productId);
+    if (index > -1) {
+        wishlist.splice(index, 1);
+    } else {
+        wishlist.push(productId);
+        stats.shares++;
+    }
+    saveWishlist();
+    saveStats();
+    displayWishlist();
+    updateDashboard();
+}
+
+// عرض المفضلة
+function displayWishlist() {
+    const grid = document.getElementById('wishlistGrid');
+    grid.innerHTML = '';
+
+    if (wishlist.length === 0) {
+        grid.innerHTML = '<div class="empty-message">لا توجد منتجات في المفضلة</div>';
+        return;
+    }
+
+    const wishlistProducts = products.filter(p => wishlist.includes(p.id));
+    wishlistProducts.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <div class="product-image">${product.emoji}</div>
+            <div class="product-info">
+                <div class="product-category">${getCategoryName(product.category)}</div>
+                <div class="product-name">${product.name}</div>
+                <div class="product-price">${product.price} ريال</div>
+                <div class="product-rating">⭐ ${product.rating} (${product.reviews} تقييم)</div>
+                <div class="product-actions">
+                    <a href="${product.amazonUrl}?tag=${AFFILIATE_TAG}" target="_blank" class="btn btn-primary" onclick="trackClick(${product.id})">اشتري الآن</a>
+                    <button class="btn btn-secondary" onclick="toggleWishlist(${product.id})">إزالة</button>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+// تحديث لوحة التحكم
+function updateDashboard() {
+    document.getElementById('totalClicks').textContent = stats.clicks;
+    document.getElementById('totalShares').textContent = stats.shares;
+
+    // أفضل منتج
+    let topProductId = null;
+    let maxClicks = 0;
+    for (const [productId, clicks] of Object.entries(stats.productClicks)) {
+        if (clicks > maxClicks) {
+            maxClicks = clicks;
+            topProductId = parseInt(productId);
+        }
+    }
+
+    if (topProductId) {
+        const topProduct = products.find(p => p.id === topProductId);
+        document.getElementById('topProduct').textContent = `${topProduct.name} (${maxClicks} نقرة)`;
+    }
+}
+
+// الحصول على اسم الفئة
+function getCategoryName(category) {
+    const names = {
+        electronics: 'إلكترونيات',
+        books: 'كتب',
+        fashion: 'ملابس',
+        home: 'منزل',
+        sports: 'رياضة',
+        toys: 'ألعاب',
+        beauty: 'تجميل وعطور'
+    };
+    return names[category] || category;
+}
+
+// البحث
+document.addEventListener('DOMContentLoaded', function() {
+    loadStats();
+    loadWishlist();
+    displayProducts();
+    updateDashboard();
+    displayWishlist();
+
+    // البحث
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const filtered = products.filter(p =>
+                p.name.toLowerCase().includes(query) ||
+                getCategoryName(p.category).toLowerCase().includes(query)
+            );
+            displayProducts(filtered);
+        });
+    }
+
+    // الفئات
+    const categoryCards = document.querySelectorAll('.category-card');
+    categoryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const category = this.dataset.category;
+            const filtered = products.filter(p => p.category === category);
+            displayProducts(filtered);
+            // تمرير سلس إلى قسم المنتجات
+            document.getElementById('explore').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+});
