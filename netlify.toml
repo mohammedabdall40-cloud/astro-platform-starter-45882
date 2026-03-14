@@ -1,0 +1,45 @@
+# Netlify Configuration for Amazonats Store
+
+# Build settings
+[build]
+  publish = "."
+  command = "echo 'Static site - no build needed'"
+
+# Redirects for single page app
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "public, max-age=3600"
+
+# Cache for assets
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/script.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Context for production
+[context.production]
+  environment = { SITE_ENV = "production" }
+
+# Context for preview
+[context.deploy-preview]
+  environment = { SITE_ENV = "preview" }
+
+# Context for branch preview
+[context.branch-deploy]
+  environment = { SITE_ENV = "branch-preview" }
