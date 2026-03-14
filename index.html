@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amazonats Store - أفضل منتجات Amazon السعودية">
+    <title>Amazonats Store - متجر أمازون</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🛍️ Amazonats Store</div>
+            <div class="nav-links">
+                <a href="#explore" class="nav-link">الاستكشاف</a>
+                <a href="#wishlist" class="nav-link">المفضلة</a>
+                <a href="#dashboard" class="nav-link">لوحة التحكم</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>أفضل منتجات Amazon</h1>
+            <p>اكتشف أفضل العروض والمنتجات من Amazon السعودية</p>
+            <input type="text" id="searchInput" class="search-box" placeholder="ابحث عن منتج...">
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>الفئات</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="electronics">
+                    <span>📱</span>
+                    <p>إلكترونيات</p>
+                </div>
+                <div class="category-card" data-category="books">
+                    <span>📚</span>
+                    <p>كتب</p>
+                </div>
+                <div class="category-card" data-category="fashion">
+                    <span>👕</span>
+                    <p>ملابس</p>
+                </div>
+                <div class="category-card" data-category="home">
+                    <span>🏠</span>
+                    <p>منزل</p>
+                </div>
+                <div class="category-card" data-category="sports">
+                    <span>⚽</span>
+                    <p>رياضة</p>
+                </div>
+                <div class="category-card" data-category="toys">
+                    <span>🎮</span>
+                    <p>ألعاب</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="explore" class="products">
+        <div class="container">
+            <h2>المنتجات</h2>
+            <div id="productsGrid" class="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section id="wishlist" class="wishlist">
+        <div class="container">
+            <h2>المفضلة</h2>
+            <div id="wishlistGrid" class="products-grid">
+                <!-- Wishlist items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <h2>لوحة التحكم</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>إجمالي النقرات</h3>
+                    <p id="totalClicks" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>المشاركات</h3>
+                    <p id="totalShares" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>أفضل منتج</h3>
+                    <p id="topProduct" class="stat-value">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>معرّف الشراكة</h3>
+                    <p class="stat-value">socialinkstor-21</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Amazonats Store. جميع الحقوق محفوظة.</p>
+            <p>معرّف الشراكة: <strong>socialinkstor-21</strong></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
